@@ -1,6 +1,5 @@
 body {
-  width: 64rem;
-  margin: 0 auto;
+  width: 100vw;
 }
 
 body * {
@@ -20,45 +19,87 @@ body * {
 
 .featured-resources__content {
   width: 80%;
-  margin: 0 auto;
-  display: flex;
-  gap: 1%;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0.9375rem;
 }
 
 .content__card {
-  width: 24%;
-  margin-bottom: 0.625rem;
+  width: 100%;
+  position: relative;
+  height: fit-content;
+  box-shadow: 0.3125rem 0.3125rem 0.3125rem 0.3125rem rgba(0, 0, 255, 0.03);
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+
+.focus-background {
+  position: absolute;
+  width: 0.3125rem;
+  height: 0.3125rem;
+  background-color: yellow;
+  border-radius: 100%;
+  z-index: -1;
+  transition: width 2s, height 2s;
+  left: -5rem;
+}
+
+.content__card:hover .focus-background {
+  width: 200%;
+  height: 200%;
 }
 
 .card__img {
+  height: 25%;
+}
+
+.card__img img {
   width: 100%;
   display: block;
-  border-radius: 20px 20px 0px 0px;
+  border-radius: 1.25rem 1.25rem 0 0;
 }
 
 .card__txt {
-  border-radius: 0px 0px 20px 20px;
-  height: 300px;
+  border-radius: 0 0 1.25rem 1.25rem;
+  height: 18.75rem;
 }
 
 .card__button {
+  padding: 0.9375rem;
+  height: 10%;
+  display: flex;
+}
+
+.button__txt {
+  text-decoration: none;
+  color: white;
   display: flex;
   align-items: center;
-  gap: 5px;
-  text-decoration: none;
+  transition: color 1s;
+}
+
+.content__card:hover .button__txt {
   color: black;
-  padding: 15px;
 }
 
-.card__short-arrow {
-  width: 15px;
+.button__arrow {
+  background-image: url(https://img.icons8.com/material/512/right.png);
+  background-size: cover;
+  background-color: #fff;
+  margin-left: 0.3125rem;
+  transition: width 1s, height 1s, margin-left 1s;
 }
 
-.short-arrow__block {
-  width: 25px;
-  height: 25px;
-  display: flex;
+.content__card:hover .button__arrow {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.button__txt:hover .button__arrow {
+  width: 1.875rem;
+  height: 1.875rem;
+  margin-left: 0.625rem;
+  background-image: url(https://img.icons8.com/material/512/right.png), linear-gradient(90deg, #ffe24d 11.03%, #99cc7e 53.39%, #93e0f1 103.45%);
 }
 
 .txt__topic {
@@ -66,21 +107,43 @@ body * {
   text-transform: uppercase;
   font-size: x-small;
   margin: 0;
-  padding: 15px;
+  padding: 0.9375rem;
 }
 
 .txt__title {
   font-size: larger;
   margin: 0;
-  padding: 0 15px 10px;
-  line-height: 25px;
+  padding: 0 0.9375rem 0.625rem;
+  line-height: 1.5625rem;
 }
 
 .txt__date {
   font-weight: lighter;
   font-size: x-small;
-  margin: 0px;
-  padding: 15px;
+  margin: 0;
+  padding: 0.9375rem;
+}
+
+.featured-resources__view-all-button {
+  background-color: yellow;
+  text-decoration: none;
+  color: black;
+  padding: 0.625rem 1.25rem;
+  margin: 0.625rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: small;
+}
+
+@media (max-width: 500px) {
+  .featured-resources__content {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media (min-width: 501px) and (max-width: 768px) {
+  .featured-resources__content {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
